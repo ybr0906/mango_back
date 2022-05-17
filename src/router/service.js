@@ -31,13 +31,38 @@ const upload = multer({
     }),
 })
 
+//main reg
+router.post("/index", (req, res) => {
+    const { name, password, phone, category, address, symptom } = req.body
+    getConnection((conn) => {
+        conn.beginTransaction();
+        new Promise((resolve, reject) => {
+            conn.query(`insert into service (name, password, phone, type, address, symptom, progress, reg_date) values (?, ?, ?, ? ,?, ?, 0, curdate())`, [name, password, phone, category, address, symptom], function (err, rows, fields) {
+                if (err) {
+                    console.log(err)
+                    reject('sevice');
+                } else {
+                    resolve(rows.insertId)
+                    res.json({ success: true });
+                }
+            })
+        }).catch((e) => {
+            console.log(e);
+            conn.rollback();
+            res.json({ success: fail });
+        }).finally(() => {
+            conn.commit();
+        });
+    })
+})
+
 
 //main 
 router.get("/index", (req, res) => {
     getConnection((conn) => {
         conn.query(`select service_id, name, substring(symptom,1,100) as symptom, date_format(reg_date, '%Y-%m-%d') reg_date, progress 
         from service
-        order by id desc
+        order by service_id desc
         limit 6`, [], function (err, rows, fields) {
             if (err) {
                 console.log(err);
@@ -91,12 +116,12 @@ router.get("/:id", (req, res) => {
 //서비스 등록
 router.post("/", upload.array('file', 10), (req, res) => {
     const input = JSON.parse(req.body.input);
-    const { name, password, phone, type, address, symptom } = input
+    const { name, password, phone, category, address, symptom } = input
 
     getConnection((conn) => {
         conn.beginTransaction();
         new Promise((resolve, reject) => {
-            conn.query(`insert into service (name, password, phone, type, address, symptom, progress, reg_date) values (?, ?, ?, ? ,?, ?, 0, curdate())`, [name, password, phone, type, address, symptom], function (err, rows, fields) {
+            conn.query(`insert into service (name, password, phone, type, address, symptom, progress, reg_date) values (?, ?, ?, ? ,?, ?, 0, curdate())`, [name, password, phone, category, address, symptom], function (err, rows, fields) {
                 if (err) {
                     console.log(err)
                     reject('sevice');
