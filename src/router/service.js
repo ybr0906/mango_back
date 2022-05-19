@@ -43,6 +43,7 @@ router.post("/index", (req, res) => {
                     reject('sevice');
                 } else {
                     resolve(rows.insertId)
+                    alertTalk(phone, address, category);
                     res.json({ success: true });
                 }
             })
@@ -132,6 +133,7 @@ router.post("/", upload.array('file', 10), (req, res) => {
         }).then((result) => {
             if (req.files.length == 0) {
                 return new Promise((resolve, reject) => {
+                    alertTalk(phone, address, category);
                     resolve();
                     res.json({ success: true });
                 })
@@ -147,6 +149,7 @@ router.post("/", upload.array('file', 10), (req, res) => {
                             console.log(err)
                         } else {
                             resolve();
+                            alertTalk(phone, address, category);
                             res.json({ success: true });
                         }
                     })
