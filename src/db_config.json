@@ -1,5 +1,5 @@
 {
-    "host": "database-2.cffy0wjs0kbh.ap-northeast-2.rds.amazonaws.com",
+    "host": "mango-rds.cl4pi4gnqrag.ap-northeast-2.rds.amazonaws.com",
     "port": "3306",
     "user": "admin",
     "password": "12345678",

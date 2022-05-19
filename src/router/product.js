@@ -16,7 +16,7 @@ const s3 = new AWS.S3();
 const upload = multer({
     storage: multerS3({
         s3: s3,
-        bucket: 'mangos3',
+        bucket: 'mango-s3',
         key(req, file, cb) {
             const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
             cb(null, 'product/' + file.originalname.split('.')[0] + '-' + uniqueSuffix + '.' + file.mimetype.split('/')[1])
