@@ -73,7 +73,7 @@ router.get("/", (req, res) => {
         conn.query(`select id_sale, title, contents, price, category, thumbnail_url, detail_url, cpu_value, mainboard, vga, (select count(id_sale) count from sale where title like ? ) count 
         from sale 
         where title like ?
-        order by id_sale desc limit ?, 8`, [input_query, input_query, (Number(page) - 1) * 4], function (err, rows, fields) {
+        order by id_sale desc limit ?, 8`, [input_query, input_query, (Number(page) - 1) * 8], function (err, rows, fields) {
             if (err) {
                 console.log(err);
                 res.json({ message: 'error' });
