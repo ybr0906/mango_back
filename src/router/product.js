@@ -67,13 +67,11 @@ router.post("/", upload.fields([{ name: 'thumbnail_url', maxCount: 1 }, { name: 
 })
 
 router.get("/", (req, res) => {
-    const { page, input } = req.query;
-    const input_query = "%" + input + "%";
+    const { page } = req.query;
     getConnection((conn) => {
-        conn.query(`select id_sale, title, contents, price, category, thumbnail_url, detail_url, cpu_value, mainboard, vga, (select count(id_sale) count from sale where title like ? ) count 
+        conn.query(`select id_sale, title, contents, price, category, thumbnail_url, detail_url, cpu_value, mainboard, vga, (select count(id_sale) count from sale) count 
         from sale 
-        where title like ?
-        order by id_sale desc limit ?, 8`, [input_query, input_query, (Number(page) - 1) * 8], function (err, rows, fields) {
+        order by id_sale desc limit ?, 8`, [(Number(page) - 1) * 8], function (err, rows, fields) {
             if (err) {
                 console.log(err);
                 res.json({ message: 'error' });
