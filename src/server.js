@@ -4,7 +4,7 @@ require('dotenv').config();
 const cors = require('cors');
 
 let corsOptions = {
-    origin: ['*']
+    origin: ['http://13.124.134.116:3000/*']
 }
 
 
