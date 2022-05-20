@@ -20,7 +20,7 @@ const alertTalk = (phone, address, category) => {
         },
 
         // 2번째 파라미터 항목인 allowDuplicates 옵션을 true로 설정할 경우 중복 수신번호를 허용합니다.
-    ], true).then(res => console.log(res));
+    ]).then(res => console.log(res));
 }
 
 module.exports = alertTalk;

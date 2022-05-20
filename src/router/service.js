@@ -43,7 +43,7 @@ router.post("/index", (req, res) => {
                     reject('sevice');
                 } else {
                     resolve(rows.insertId)
-                    //alertTalk(phone, address, category);
+                    alertTalk(phone, address, category);
                     res.json({ success: true });
                 }
             })
