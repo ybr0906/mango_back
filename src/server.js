@@ -4,7 +4,7 @@ require('dotenv').config();
 const cors = require('cors');
 
 let corsOptions = {
-    origin: ['http://localhost:3000', 'https://mangocom.co.kr', 'https://mangocom.co.kr/*']
+    origin: ['http://localhost:3000', 'https://www.mangocom.co.kr', 'https://www.mangocom.co.kr/*', 'http://www.mangocom.co.kr', 'http://www.mangocom.co.kr/*', 'http://mangocom.co.kr', 'http://mangocom.co.kr/*', 'https://mangocom.co.kr', 'https://mangocom.co.kr/*']
 }
 
 
