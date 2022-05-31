@@ -31,23 +31,18 @@ const alertTalk = (phone, address, category) => {
     }
 
     messageService.sendMany([
-        // {
-        //     to: "01080094613",
-        //     from: "01090097747",
-        //     text: `서비스문의 ${phone} / ${address} / ${service}`
-        // },
-        // {
-        //     to: "01039596434",
-        //     from: "01090097747",
-        //     text: `서비스문의 ${phone} / ${address} / ${service}`
-        // },
-        // {
-        //     to: "01090097747",
-        //     from: "01090097747",
-        //     text: `서비스문의 ${phone} / ${address} / ${service}`
-        // },
         {
-            to: "01055322155",
+            to: "01080094613",
+            from: "01090097747",
+            text: `서비스문의 ${phone} / ${address} / ${service}`
+        },
+        {
+            to: "01039596434",
+            from: "01090097747",
+            text: `서비스문의 ${phone} / ${address} / ${service}`
+        },
+        {
+            to: "01090097747",
             from: "01090097747",
             text: `서비스문의 ${phone} / ${address} / ${service}`
         },
