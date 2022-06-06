@@ -1,8 +1,0 @@
-{
-    "host": "database-1.cl4pi4gnqrag.ap-northeast-2.rds.amazonaws.com",
-    "port": "3306",
-    "user": "admin",
-    "password": "rj89vf0906!",
-    "database": "mangocom",
-    "connectionLimit": 10
-}
